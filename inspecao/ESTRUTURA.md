@@ -1,51 +1,61 @@
-# Inspeções SSMA — mapa da estrutura
+# Inspeções SSMA — estrutura do projeto
 
 Origem: artefato "Inspeções SSMA" (claude.ai/artifact/MSb9z9kSCdQ48N8tCKPwVs).
-Hoje é **1 arquivo HTML de ~1,8 MB** (~7.800 linhas, ~650 funções, ~550 KB de imagens em base64).
-Esta pasta é o esqueleto para separá-lo em arquivos organizados.
+É um app de **um único arquivo HTML (~1,8 MB, ~7.800 linhas, ~650 funções)** que usa o banco e o login do ambiente de artefatos do Claude (`window.claude.use("db" | "user" | "downloads")`).
 
-## Camadas do app original
-1. **HTML + CSS** (~90 KB de estilo): tema claro/escuro, menu lateral, barra inferior, cartões.
-2. **JavaScript** (~1,7 MB): telas `vXxx()`, funções auxiliares e navegação via `go('tela')`.
-3. **Banco de dados do artefato** (`db`): ~45 coleções, regras de leitura/escrita por perfil.
-4. **Biblioteca externa**: jsPDF 4.2.1 (gera PDFs).
+## Como esta pasta está organizada
 
-## Módulos (menu do app → arquivo em `js/modulos/`)
-| Menu | Telas (`go`) | Arquivo |
-|---|---|---|
-| Painel geral | inicio | `painel.js` |
-| Acompanhamento de ações | acomp, acoes, acao | `acoes.js` |
-| Acidentologia | acidentologia | `acidentologia.js` |
-| Comunicados de acidente | comunic, comunicdet | `comunicados.js` |
-| Pesquisa psicossocial / Ergonomia 360° | erg | `ergonomia.js` |
-| DDS, Ranking, Mural | dds, ranking, feed | `comunidade.js` |
-| Inspeções de segurança (o núcleo) | nova, ident, quest, resumo, done, hist, detalhe | `inspecoes.js` |
-| Investigação de acidentes | acid, acidnovo, acidform | `acidentes.js` |
-| Pertinência | pert | `pertinencia.js` |
-| Treinamentos | trein, treinadd, treinpes, turma, trcad, trrest, trcursof, trturmaf, carteira | `treinamentos.js` |
-| OCS | ocs, ocsnova, ocsresumo, ocsok, ocsver | `ocs.js` |
-| RSP (revisão de projetos) | rsp, rspnova, rspver | `rsp.js` |
-| IPAR | ipar, iparver | `ipar.js` |
-| Pirâmide Máquinas SIM / Etiquetas SIM | sim, etq, etqver | `sim.js` |
-| Meu perfil, Equipe, Mão de obra, Base RH | minhas, tarefa, cadastro, meu, maoobra | `pessoas.js` |
+```
+inspecao/
+├── original/        PONTO DE RESTAURAÇÃO — cópia intacta do app (nunca editar)
+│   └── inspecoes-ssma.original.html
+├── design/          Nova identidade visual (Design System "Sentinela")
+│   ├── tokens.css       cores, tipografia, espaços, raios, sombras, movimento (claro + escuro)
+│   ├── componentes.css  botões, cards, KPIs, filtros, formulários, tabelas, modais, shell…
+│   ├── shell.html       novo cabeçalho, trilha/breadcrumb, sidebar, navegação móvel
+│   └── shell.js         sidebar recolhível, busca Ctrl+K, configurações, ícones, a11y
+├── tools/           Build e testes
+│   ├── build.py         original + design  ->  dist/inspecoes-ssma.html
+│   ├── mock-claude.js   banco/usuário SIMULADOS (só teste local, nunca publicar)
+│   ├── run-tour.js      percorre as 57 telas, captura e mede erros
+│   ├── run-interacoes.js  25 checagens de sidebar/busca/tema/menu móvel
+│   ├── run-a11y.js      axe-core (WCAG 2.x A/AA) em 25 telas × claro/escuro
+│   ├── run-overflow.js  rolagem horizontal em 390/820/1024/1440 px
+│   └── axe.min.js       axe-core 4.10.2 (MPL-2.0)
+└── dist/
+    └── inspecoes-ssma.html   resultado final, pronto para publicar como artefato
+```
 
-## Núcleo (`js/core/`)
-- `navegacao.js` — `go`, `voltar`, `render`, menu lateral, tema.
-- `acesso.js` — login, perfis, hierarquia, vínculo conta→NP, `pode()`.
-- `dados.js` — acesso ao banco (`db`), rascunhos locais, cofre.
-- `graficos.js` — gráficos SVG sem dependências (colunas, barras, rosca).
-- `pdf.js` — PDFs (ocorrência, carteira, certificado, turma, RSP, relatório).
-- `notificacoes.js` — sino e avisos por módulo.
+## Princípio: camada de design, sem tocar na lógica
+O JavaScript de negócio (permissões, hierarquia, banco, regras de cada módulo) **não é alterado**.
+A nova interface entra como CSS + um script que *envolve* `render()`, `montaMenu()` e `aplicaTema()`.
+O build também aplica poucos remendos de bugs de interface do original, listados em `PATCHES` no `build.py`
+(cada um é verificado para casar exatamente 1 vez).
 
-## Banco de dados (coleções principais)
-pessoas, perfis, vinculos, usuarios, acessos, base_rh, inspecoes, acoes, ocorrencias (+_med, _ind), ocs, rsp, ipar (+_lin, _rev), etiquetas, treinos, turmas, cursos, trein_sol/audit/docs, restricoes, dds, posts, reacoes, comentarios, tarefas, fotos, fotos_restr, entrevistas, erg_* (13 coleções), config.
-Sensíveis (só admin lê): ocorrencias_med, fotos_restr, entrevistas, solicitacoes.
+## Como gerar e testar
+```bash
+npm pack lucide-static@0.468.0 && mkdir -p /tmp/lucide && tar xzf lucide-static-*.tgz -C /tmp/lucide   # ícones
+python3 tools/build.py                                   # gera dist/inspecoes-ssma.html
+cd tools && NODE_PATH=$(npm root -g) node run-interacoes.js ../dist/inspecoes-ssma.html /tmp/saida
+```
 
-## ⚠️ Limite importante
-O app usa o **banco e o login do ambiente de artefatos do Claude**. Fora de lá (neste site no GitHub Pages) ele não tem banco nem usuários.
-Para rodar aqui será preciso trocar a camada `core/dados.js` + `core/acesso.js` por um back-end real (ex.: Supabase, como no projeto Missão SIM).
+## Módulos do app (menu -> telas `go('tela')`)
+| Menu | Telas |
+|---|---|
+| Painel geral / Acompanhamento / Acidentologia / Comunicados | inicio, acomp, acoes, acao, acidentologia, comunic, comunicdet |
+| DDS, Ranking, Mural | dds, ranking, feed |
+| Inspeções de segurança | nova, ident, quest, resumo, done, hist, detalhe |
+| Investigação de acidentes / Pertinência | acid, acidnovo, acidform, pert |
+| Treinamentos | trein, treinadd, treinpes, turma, trcad, trrest, trcursof, trturmaf, carteira |
+| OCS · RSP · IPAR | ocs*, rsp*, ipar, iparver |
+| Ergonomia 360° | erg |
+| Sistema SIM | sim, etq, etqver |
+| Gestão | minhas, meu, tarefa, cadastro, maoobra, equipe, baserh, vinculos, usuarios, gestao, radar, relatorio |
 
-## Próximos passos
-1. Separar CSS e JS do HTML original nestes arquivos.
-2. Trocar a camada de dados por um back-end real.
-3. Publicar em `/inspecao/` e testar.
+## Banco de dados (≈45 coleções, regras por perfil no artefato)
+pessoas, perfis, vinculos, usuarios, acessos, base_rh, inspecoes, acoes, ocorrencias(+_med,_ind), ocs, rsp, ipar(+_lin,_rev), etiquetas, treinos, turmas, cursos, trein_*, restricoes, dds, posts, reacoes, comentarios, tarefas, fotos, erg_* (13), config.
+Sensíveis (somente admin): ocorrencias_med, fotos_restr, entrevistas, solicitacoes.
+
+## Limite importante
+Fora do ambiente de artefatos o app não tem banco nem login. Para rodar no site (GitHub Pages) seria preciso trocar a camada de dados/autenticação por um back-end real (ex.: Supabase).
+Publicar o `dist/` **no mesmo artefato** preserva os dados e permissões; publicar como artefato novo começa com banco vazio.

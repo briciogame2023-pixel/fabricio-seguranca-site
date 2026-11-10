@@ -29,8 +29,31 @@ function trocaEmoji(raiz){
       f.append(s);i=m.index+m[0].length}
     if(i<t.length)f.append(t.slice(i));n.replaceWith(f)});
 }
+/* ---------- 1b. Acessibilidade: nomes, descrições e papéis ausentes no HTML gerado pelo app ---------- */
+function nomeCampo(el){
+  const alvo=el.closest(".fx,.fl,.rlin")||el.parentElement;
+  let t=alvo&&$("span,.rl",alvo);t=t&&t!==el&&!t.contains(el)?t.textContent.trim():"";
+  if(!t&&el.previousElementSibling&&/^(LABEL|SPAN|B|P)$/.test(el.previousElementSibling.tagName))t=el.previousElementSibling.textContent.trim();
+  if(!t&&el.placeholder)t=el.placeholder;
+  if(!t&&el.tagName==="SELECT"&&el.options[0])t=el.options[0].textContent.trim();
+  if(!t&&el.type==="date")t="Data";
+  if(!t&&el.type==="file")t="Anexar arquivo";
+  if(!t&&el.type==="search")t="Buscar";
+  return t.replace(/\s+/g," ").slice(0,80);
+}
+function a11yPass(raiz){
+  $$("input:not([type=hidden]):not([aria-label]):not([aria-labelledby]),select:not([aria-label]):not([aria-labelledby]),textarea:not([aria-label]):not([aria-labelledby])",raiz).forEach(el=>{
+    if(el.id&&document.querySelector('label[for="'+el.id+'"]'))return;
+    if(el.closest("label")||el.title)return;
+    const n=nomeCampo(el);if(n)el.setAttribute("aria-label",n)});
+  $$("svg[role=img]",raiz).forEach(sv=>{
+    if((sv.getAttribute("aria-label")||"").trim()||sv.getAttribute("aria-labelledby"))return;
+    const h=sv.closest(".gcard,.bcard,section"),t=h&&$("h4,h3,.bbar",h);
+    sv.setAttribute("aria-label",(t?t.textContent.trim():"")||"Gráfico")});
+  $$("[role=tablist]",raiz).forEach(tl=>{if(!$("[role=tab]",tl)){tl.setAttribute("role","group");if(!tl.getAttribute("aria-label"))tl.setAttribute("aria-label","Seções")}});
+}
 let emoTimer=0;
-function agendaEmoji(){if(emoTimer)return;emoTimer=requestAnimationFrame(()=>{emoTimer=0;try{trocaEmoji($("#app"));trocaEmoji($("#drawer"))}catch(e){}})}
+function agendaEmoji(){if(emoTimer)return;emoTimer=requestAnimationFrame(()=>{emoTimer=0;try{trocaEmoji($("#app"));trocaEmoji($("#drawer"));a11yPass($("#app"))}catch(e){}})}
 new MutationObserver(agendaEmoji).observe($("#app"),{childList:true,subtree:true,characterData:true});
 
 /* ---------- 2. Sidebar ---------- */
@@ -66,7 +89,7 @@ function decoraSidebar(){
   $$(".dic",d).forEach(x=>{if(!x.querySelector("svg")&&x.textContent.trim()==="🦴")x.innerHTML=L("bone")});
 }
 /* tooltip único da sidebar recolhida */
-const tip=document.createElement("div");tip.className="sb-tip";tip.setAttribute("role","tooltip");document.body.append(tip);
+const tip=document.createElement("div");tip.className="sb-tip";tip.setAttribute("aria-hidden","true");document.body.append(tip);
 function mostraTip(el){if(!document.body.classList.contains("sb-min")||!el.dataset.tip){tip.classList.remove("on");return}const r=el.getBoundingClientRect(),z=parseFloat(document.documentElement.style.zoom)||1;tip.textContent=el.dataset.tip;tip.style.left=(r.right/1)+10+"px";tip.style.top=(r.top+r.height/2)+"px";tip.style.transform="translateY(-50%)";tip.style.left=(r.right+10)+"px";tip.classList.add("on")}
 document.addEventListener("mouseover",e=>{const t=e.target.closest&&e.target.closest("#drawer [data-tip]");t?mostraTip(t):tip.classList.remove("on")});
 document.addEventListener("focusin",e=>{const t=e.target.closest&&e.target.closest("#drawer [data-tip]");t?mostraTip(t):tip.classList.remove("on")});

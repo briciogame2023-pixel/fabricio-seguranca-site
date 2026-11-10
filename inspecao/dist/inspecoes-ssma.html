@@ -735,6 +735,7 @@ svg[data-ro] .ergreg{cursor:default}
   --brand-950:#06130D; --brand-900:#0A2017; --brand-800:#10311F; --brand-700:#164529;
   --brand-600:#1B6B43; --brand-500:#23895A; --brand-400:#4DB67F; --brand-300:#8ED7AE;
   --brand-100:#DDF2E6; --brand-50:#EEF8F2;
+  --btn:#1B6B43; --btn-hover:#15573A;
   --acc:#B7E24C;            /* lima: realce sobre fundos escuros */
   --acc-ink:#1E3A05;
 
@@ -780,7 +781,7 @@ svg[data-ro] .ergreg{cursor:default}
   --verm:#FF8A80; --verm-bg:#3A1C1A; --ambar:#F2B455; --ambar-bg:#352A12; --azul:#8DB0FF; --azul-bg:#17233F; --na-bg:#1C2620;
   --panel2:#18241D;
   --ok:#6FD39A; --ok-bg:#15301F; --warn:#F2B455; --warn-bg:#352A12; --danger:#FF8A80; --danger-bg:#3A1C1A; --info:#8DB0FF; --info-bg:#17233F;
-  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76;
+  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76; --btn:#1F7F52; --btn-hover:#278F5F;
   --sh-1:0 1px 2px rgba(0,0,0,.4); --sh-2:0 6px 18px rgba(0,0,0,.35); --sh-3:0 14px 36px rgba(0,0,0,.5);
   --sb-bg:linear-gradient(180deg,#08120D 0%,#060D09 100%);
 }}
@@ -792,7 +793,7 @@ svg[data-ro] .ergreg{cursor:default}
   --verm:#FF8A80; --verm-bg:#3A1C1A; --ambar:#F2B455; --ambar-bg:#352A12; --azul:#8DB0FF; --azul-bg:#17233F; --na-bg:#1C2620;
   --panel2:#18241D;
   --ok:#6FD39A; --ok-bg:#15301F; --warn:#F2B455; --warn-bg:#352A12; --danger:#FF8A80; --danger-bg:#3A1C1A; --info:#8DB0FF; --info-bg:#17233F;
-  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76;
+  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76; --btn:#1F7F52; --btn-hover:#278F5F;
   --sh-1:0 1px 2px rgba(0,0,0,.4); --sh-2:0 6px 18px rgba(0,0,0,.35); --sh-3:0 14px 36px rgba(0,0,0,.5);
   --sb-bg:linear-gradient(180deg,#08120D 0%,#060D09 100%);
 }
@@ -878,7 +879,7 @@ h3{font-family:var(--f-display);font-size:var(--fs-md);font-weight:700;letter-sp
 .eu{background:var(--surface-3);border:1px solid var(--line);color:var(--ink);padding:3px 12px 3px 3px;height:42px;border-radius:999px;transition:border-color var(--t-fast),background var(--t-fast)}
 .eu:hover{border-color:var(--line-strong);background:var(--card)}
 .eu .av{border:2px solid var(--brand-500);width:34px;height:34px}.avt{background:var(--brand-700);color:#fff}
-#eu-nm{font-weight:700;font-size:14px;max-width:130px;display:block;line-height:1.1}#eu-pf{display:block;font-size:11.5px;color:var(--mute);font-weight:600;line-height:1.1;margin-top:2px}
+#eu-nm{font-weight:700;font-size:14px;max-width:130px;display:block;line-height:1.1}#eu-pf{display:block;font-size:12px;color:var(--ink2);font-weight:600;line-height:1.1;margin-top:2px}
 .eu-tx{display:flex;flex-direction:column;min-width:0}
 
 /* popover de configurações */
@@ -942,7 +943,7 @@ button.kpi:hover,.stcards button:hover{transform:translateY(-2px);box-shadow:var
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid transparent;border-radius:var(--r-md);padding:13px 18px;min-height:48px;font-size:15.5px;font-weight:700;letter-spacing:.005em;background:var(--brand-800);color:#fff;box-shadow:0 1px 2px rgba(10,32,23,.18),inset 0 1px 0 rgba(255,255,255,.08);transition:background var(--t-fast),transform var(--t-fast) var(--ease),box-shadow var(--t-fast),filter var(--t-fast)}
 .btn:not(:disabled):hover{background:var(--brand-700);filter:none;box-shadow:var(--sh-2)}
 .btn:not(:disabled):active{transform:translateY(1px) scale(.995);box-shadow:none}
-.btn.ok{background:var(--brand-600);color:#fff}.btn.ok:not(:disabled):hover{background:var(--brand-500)}
+.btn.ok{background:var(--btn);color:#fff}.btn.ok:not(:disabled):hover{background:var(--btn-hover)}
 .btn.alt{background:var(--card);color:var(--ink);border-color:var(--line-strong);box-shadow:var(--sh-1)}
 .btn.alt:not(:disabled):hover{background:var(--surface-3);border-color:var(--ink2)}
 .btn.danger{background:var(--danger-bg);color:var(--danger);border-color:color-mix(in srgb,var(--danger) 45%,transparent);box-shadow:none}
@@ -959,11 +960,11 @@ button.kpi:hover,.stcards button:hover{transform:translateY(-2px);box-shadow:var
 .seg button,.stbtns button{border:1px solid var(--line-strong);background:var(--card);color:var(--ink2);border-radius:var(--r-pill);padding:8px 16px;min-height:42px;font-size:14.5px;font-weight:600;transition:background var(--t-fast),border-color var(--t-fast),color var(--t-fast),transform var(--t-fast)}
 .seg button:hover,.stbtns button:hover{border-color:var(--brand-500);color:var(--brand-600);background:var(--brand-50)}
 .seg button:active,.stbtns button:active{transform:scale(.97)}
-.seg button[aria-pressed="true"]{background:var(--brand-600);border-color:var(--brand-600);color:#fff}
+.seg button[aria-pressed="true"]{background:var(--btn);border-color:var(--btn);color:#fff}
 .seg button[aria-pressed="true"]::before{content:"✓ ";font-weight:800}
 .stbtns button{border-radius:var(--r-sm);min-height:40px}.stbtns button[aria-pressed="true"]{background:var(--brand-800);border-color:var(--brand-800);color:#fff}
 .fbox{border-radius:var(--r-lg);padding:14px;gap:12px}
-.ftog{border-radius:var(--r-md);background:var(--surface-3);min-height:42px}.ftog b{background:var(--brand-600);color:#fff}
+.ftog{border-radius:var(--r-md);background:var(--surface-3);min-height:42px}.ftog b{background:var(--btn);color:#fff}
 .fchip{background:var(--brand-100);color:var(--brand-700);border:1px solid color-mix(in srgb,var(--brand-500) 40%,transparent);min-height:32px}
 .fchip:hover{background:var(--brand-600);color:#fff}
 .fl span{color:var(--mute);font-size:11.5px;letter-spacing:.07em}
@@ -1020,7 +1021,7 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
 .nav button{font-size:12px;font-weight:700;color:var(--mute);transition:color var(--t-fast)}
 .nav button svg{stroke-width:1.9}
 .nav button[aria-current="page"]{color:var(--brand-600)}.nav button[aria-current="page"]::before{background:var(--brand-500);height:3px}
-.nav .plus svg{background:var(--brand-600);color:#fff;border-radius:12px;width:38px;height:28px;padding:3px;box-shadow:0 4px 12px rgba(27,107,67,.35)}
+.nav .plus svg{background:var(--btn);color:#fff;border-radius:12px;width:38px;height:28px;padding:3px;box-shadow:0 4px 12px rgba(27,107,67,.35)}
 
 /* ---------- LOGIN ---------- */
 .login h1{font-family:var(--f-display);letter-spacing:-.02em}.lg-card{border-radius:var(--r-xl);box-shadow:var(--sh-2)}
@@ -1051,6 +1052,7 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
   .nav{display:none}
   main{padding-bottom:56px}
   /* sidebar recolhida */
+  body.sb-min #drawer{width:var(--sb-w-min)}
   body.sb-min .sb-name,body.sb-min #drawer .di .dl,body.sb-min #drawer .dh>div,body.sb-min #drawer .ds svg,body.sb-min .sb-foot .seg,body.sb-min #drawer .dfim>.di .dl{display:none}
   body.sb-min .sb-brand{flex-direction:column;padding:12px 0;gap:10px;min-height:auto;justify-content:center}
   body.sb-min .sb-col svg{transform:rotate(180deg)}
@@ -1074,6 +1076,11 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
 }
 @media (prefers-reduced-motion:reduce){#app.pg-in>*{animation:none!important}.skel{animation:none}}
 @media print{.top,.trilha,#drawer,.nav,.pop,.pal{display:none!important}.top,.trilha,main{margin-left:0!important}}
+
+/* ---------- ÍCONES SEM DIMENSÃO (corrige SVGs 24x24 que estouravam o layout, p.ex. Ergonomia 360°) ---------- */
+#app svg[viewBox="0 0 24 24"]:not([width]):not([class]){width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+#app .ergnav button{display:inline-flex;align-items:center;gap:8px}
+.nav button.plus svg,.nav button.plus[aria-current="page"] svg{color:#fff}
 
 </style>
 </head>
@@ -6050,7 +6057,7 @@ async function baixarRelAcao(id){
 let EPOSTOS=[],EATIV=[],EAVAL=[],EMET=[],EMAPA=[],EPSI=[],ECFG={};
 const ERG_SECS=[["dash",IC.dash,"Dashboard",1,"Indicadores, riscos e evolução da gestão ergonômica."],
  ["aep",IC.lista,"AEP",2,"Avaliação Ergonômica Preliminar: identificação, triagem com checklist inteligente, método, classificação, diagnóstico e plano de ação."],
- ["aet",IC.find,"AET",4,"Análise Ergonômica do Trabalho: demanda, contexto, trabalho prescrito × real, observação, entrevistas, medições e validação."],
+ ["aet",S('<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>'),"AET",4,"Análise Ergonômica do Trabalho: demanda, contexto, trabalho prescrito × real, observação, entrevistas, medições e validação."],
  ["postos",IC.postos,"Postos de Trabalho",2,"Cadastro dos postos ligado às unidades, áreas, setores, cargos e máquinas que já existem no app."],
  ["ativ",IC.ativ,"Atividades",2,"Atividades de cada posto: ciclo, turno, população exposta e organização do trabalho."],
  ["aval",IC.aval,"Avaliações",2,"Lista de todas as AEP e AET, com versão (AEP-ERG-0001-V01), status do fluxo e histórico."],
@@ -8164,8 +8171,31 @@ function trocaEmoji(raiz){
       f.append(s);i=m.index+m[0].length}
     if(i<t.length)f.append(t.slice(i));n.replaceWith(f)});
 }
+/* ---------- 1b. Acessibilidade: nomes, descrições e papéis ausentes no HTML gerado pelo app ---------- */
+function nomeCampo(el){
+  const alvo=el.closest(".fx,.fl,.rlin")||el.parentElement;
+  let t=alvo&&$("span,.rl",alvo);t=t&&t!==el&&!t.contains(el)?t.textContent.trim():"";
+  if(!t&&el.previousElementSibling&&/^(LABEL|SPAN|B|P)$/.test(el.previousElementSibling.tagName))t=el.previousElementSibling.textContent.trim();
+  if(!t&&el.placeholder)t=el.placeholder;
+  if(!t&&el.tagName==="SELECT"&&el.options[0])t=el.options[0].textContent.trim();
+  if(!t&&el.type==="date")t="Data";
+  if(!t&&el.type==="file")t="Anexar arquivo";
+  if(!t&&el.type==="search")t="Buscar";
+  return t.replace(/\s+/g," ").slice(0,80);
+}
+function a11yPass(raiz){
+  $$("input:not([type=hidden]):not([aria-label]):not([aria-labelledby]),select:not([aria-label]):not([aria-labelledby]),textarea:not([aria-label]):not([aria-labelledby])",raiz).forEach(el=>{
+    if(el.id&&document.querySelector('label[for="'+el.id+'"]'))return;
+    if(el.closest("label")||el.title)return;
+    const n=nomeCampo(el);if(n)el.setAttribute("aria-label",n)});
+  $$("svg[role=img]",raiz).forEach(sv=>{
+    if((sv.getAttribute("aria-label")||"").trim()||sv.getAttribute("aria-labelledby"))return;
+    const h=sv.closest(".gcard,.bcard,section"),t=h&&$("h4,h3,.bbar",h);
+    sv.setAttribute("aria-label",(t?t.textContent.trim():"")||"Gráfico")});
+  $$("[role=tablist]",raiz).forEach(tl=>{if(!$("[role=tab]",tl)){tl.setAttribute("role","group");if(!tl.getAttribute("aria-label"))tl.setAttribute("aria-label","Seções")}});
+}
 let emoTimer=0;
-function agendaEmoji(){if(emoTimer)return;emoTimer=requestAnimationFrame(()=>{emoTimer=0;try{trocaEmoji($("#app"));trocaEmoji($("#drawer"))}catch(e){}})}
+function agendaEmoji(){if(emoTimer)return;emoTimer=requestAnimationFrame(()=>{emoTimer=0;try{trocaEmoji($("#app"));trocaEmoji($("#drawer"));a11yPass($("#app"))}catch(e){}})}
 new MutationObserver(agendaEmoji).observe($("#app"),{childList:true,subtree:true,characterData:true});
 
 /* ---------- 2. Sidebar ---------- */
@@ -8201,7 +8231,7 @@ function decoraSidebar(){
   $$(".dic",d).forEach(x=>{if(!x.querySelector("svg")&&x.textContent.trim()==="🦴")x.innerHTML=L("bone")});
 }
 /* tooltip único da sidebar recolhida */
-const tip=document.createElement("div");tip.className="sb-tip";tip.setAttribute("role","tooltip");document.body.append(tip);
+const tip=document.createElement("div");tip.className="sb-tip";tip.setAttribute("aria-hidden","true");document.body.append(tip);
 function mostraTip(el){if(!document.body.classList.contains("sb-min")||!el.dataset.tip){tip.classList.remove("on");return}const r=el.getBoundingClientRect(),z=parseFloat(document.documentElement.style.zoom)||1;tip.textContent=el.dataset.tip;tip.style.left=(r.right/1)+10+"px";tip.style.top=(r.top+r.height/2)+"px";tip.style.transform="translateY(-50%)";tip.style.left=(r.right+10)+"px";tip.classList.add("on")}
 document.addEventListener("mouseover",e=>{const t=e.target.closest&&e.target.closest("#drawer [data-tip]");t?mostraTip(t):tip.classList.remove("on")});
 document.addEventListener("focusin",e=>{const t=e.target.closest&&e.target.closest("#drawer [data-tip]");t?mostraTip(t):tip.classList.remove("on")});

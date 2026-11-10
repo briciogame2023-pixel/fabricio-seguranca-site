@@ -79,7 +79,7 @@ h3{font-family:var(--f-display);font-size:var(--fs-md);font-weight:700;letter-sp
 .eu{background:var(--surface-3);border:1px solid var(--line);color:var(--ink);padding:3px 12px 3px 3px;height:42px;border-radius:999px;transition:border-color var(--t-fast),background var(--t-fast)}
 .eu:hover{border-color:var(--line-strong);background:var(--card)}
 .eu .av{border:2px solid var(--brand-500);width:34px;height:34px}.avt{background:var(--brand-700);color:#fff}
-#eu-nm{font-weight:700;font-size:14px;max-width:130px;display:block;line-height:1.1}#eu-pf{display:block;font-size:11.5px;color:var(--mute);font-weight:600;line-height:1.1;margin-top:2px}
+#eu-nm{font-weight:700;font-size:14px;max-width:130px;display:block;line-height:1.1}#eu-pf{display:block;font-size:12px;color:var(--ink2);font-weight:600;line-height:1.1;margin-top:2px}
 .eu-tx{display:flex;flex-direction:column;min-width:0}
 
 /* popover de configurações */
@@ -143,7 +143,7 @@ button.kpi:hover,.stcards button:hover{transform:translateY(-2px);box-shadow:var
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid transparent;border-radius:var(--r-md);padding:13px 18px;min-height:48px;font-size:15.5px;font-weight:700;letter-spacing:.005em;background:var(--brand-800);color:#fff;box-shadow:0 1px 2px rgba(10,32,23,.18),inset 0 1px 0 rgba(255,255,255,.08);transition:background var(--t-fast),transform var(--t-fast) var(--ease),box-shadow var(--t-fast),filter var(--t-fast)}
 .btn:not(:disabled):hover{background:var(--brand-700);filter:none;box-shadow:var(--sh-2)}
 .btn:not(:disabled):active{transform:translateY(1px) scale(.995);box-shadow:none}
-.btn.ok{background:var(--brand-600);color:#fff}.btn.ok:not(:disabled):hover{background:var(--brand-500)}
+.btn.ok{background:var(--btn);color:#fff}.btn.ok:not(:disabled):hover{background:var(--btn-hover)}
 .btn.alt{background:var(--card);color:var(--ink);border-color:var(--line-strong);box-shadow:var(--sh-1)}
 .btn.alt:not(:disabled):hover{background:var(--surface-3);border-color:var(--ink2)}
 .btn.danger{background:var(--danger-bg);color:var(--danger);border-color:color-mix(in srgb,var(--danger) 45%,transparent);box-shadow:none}
@@ -160,11 +160,11 @@ button.kpi:hover,.stcards button:hover{transform:translateY(-2px);box-shadow:var
 .seg button,.stbtns button{border:1px solid var(--line-strong);background:var(--card);color:var(--ink2);border-radius:var(--r-pill);padding:8px 16px;min-height:42px;font-size:14.5px;font-weight:600;transition:background var(--t-fast),border-color var(--t-fast),color var(--t-fast),transform var(--t-fast)}
 .seg button:hover,.stbtns button:hover{border-color:var(--brand-500);color:var(--brand-600);background:var(--brand-50)}
 .seg button:active,.stbtns button:active{transform:scale(.97)}
-.seg button[aria-pressed="true"]{background:var(--brand-600);border-color:var(--brand-600);color:#fff}
+.seg button[aria-pressed="true"]{background:var(--btn);border-color:var(--btn);color:#fff}
 .seg button[aria-pressed="true"]::before{content:"✓ ";font-weight:800}
 .stbtns button{border-radius:var(--r-sm);min-height:40px}.stbtns button[aria-pressed="true"]{background:var(--brand-800);border-color:var(--brand-800);color:#fff}
 .fbox{border-radius:var(--r-lg);padding:14px;gap:12px}
-.ftog{border-radius:var(--r-md);background:var(--surface-3);min-height:42px}.ftog b{background:var(--brand-600);color:#fff}
+.ftog{border-radius:var(--r-md);background:var(--surface-3);min-height:42px}.ftog b{background:var(--btn);color:#fff}
 .fchip{background:var(--brand-100);color:var(--brand-700);border:1px solid color-mix(in srgb,var(--brand-500) 40%,transparent);min-height:32px}
 .fchip:hover{background:var(--brand-600);color:#fff}
 .fl span{color:var(--mute);font-size:11.5px;letter-spacing:.07em}
@@ -221,7 +221,7 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
 .nav button{font-size:12px;font-weight:700;color:var(--mute);transition:color var(--t-fast)}
 .nav button svg{stroke-width:1.9}
 .nav button[aria-current="page"]{color:var(--brand-600)}.nav button[aria-current="page"]::before{background:var(--brand-500);height:3px}
-.nav .plus svg{background:var(--brand-600);color:#fff;border-radius:12px;width:38px;height:28px;padding:3px;box-shadow:0 4px 12px rgba(27,107,67,.35)}
+.nav .plus svg{background:var(--btn);color:#fff;border-radius:12px;width:38px;height:28px;padding:3px;box-shadow:0 4px 12px rgba(27,107,67,.35)}
 
 /* ---------- LOGIN ---------- */
 .login h1{font-family:var(--f-display);letter-spacing:-.02em}.lg-card{border-radius:var(--r-xl);box-shadow:var(--sh-2)}
@@ -252,6 +252,7 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
   .nav{display:none}
   main{padding-bottom:56px}
   /* sidebar recolhida */
+  body.sb-min #drawer{width:var(--sb-w-min)}
   body.sb-min .sb-name,body.sb-min #drawer .di .dl,body.sb-min #drawer .dh>div,body.sb-min #drawer .ds svg,body.sb-min .sb-foot .seg,body.sb-min #drawer .dfim>.di .dl{display:none}
   body.sb-min .sb-brand{flex-direction:column;padding:12px 0;gap:10px;min-height:auto;justify-content:center}
   body.sb-min .sb-col svg{transform:rotate(180deg)}
@@ -275,3 +276,8 @@ tbody tr{transition:background var(--t-fast)}tbody tr:hover{background:var(--sur
 }
 @media (prefers-reduced-motion:reduce){#app.pg-in>*{animation:none!important}.skel{animation:none}}
 @media print{.top,.trilha,#drawer,.nav,.pop,.pal{display:none!important}.top,.trilha,main{margin-left:0!important}}
+
+/* ---------- ÍCONES SEM DIMENSÃO (corrige SVGs 24x24 que estouravam o layout, p.ex. Ergonomia 360°) ---------- */
+#app svg[viewBox="0 0 24 24"]:not([width]):not([class]){width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+#app .ergnav button{display:inline-flex;align-items:center;gap:8px}
+.nav button.plus svg,.nav button.plus[aria-current="page"] svg{color:#fff}

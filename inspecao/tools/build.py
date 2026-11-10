@@ -32,6 +32,14 @@ def icon(n): return f'<svg viewBox="0 0 24 24" {ATTR} aria-hidden="true" focusab
 shell = (D/'shell.html').read_text(encoding='utf8')
 shell = re.sub(r'\{\{icon:([\w-]+)\}\}', lambda m: icon(m.group(1)), shell)
 
+# 0) correções pontuais de bugs de interface do original (cada uma deve casar exatamente 1 vez)
+PATCHES = [
+  ('["aet",IC.find,"AET"', '["aet",S(\'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>\'),"AET"',
+   'aba AET da Ergonomia exibia "undefined" (IC.find nunca foi definido)'),
+]
+for old, new, why in PATCHES:
+    assert orig.count(old) == 1, f'remendo não casa 1x: {why}'
+    orig = orig.replace(old, new)
 out = orig
 # 1) fontes: Barlow -> Public Sans / Bricolage Grotesque (só no CSS e no link)
 out = out.replace('family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700',
