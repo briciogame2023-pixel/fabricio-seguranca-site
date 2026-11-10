@@ -1,0 +1,22 @@
+<a class="skip" href="#app">Ir para o conteúdo</a>
+<header class="top"><div class="top-in">
+  <button class="menu" id="menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer">{{icon:menu}}<span>Menu</span></button>
+  <span class="marca"><span class="sb-logo">{{icon:shield-check}}</span>Inspeções SSMA</span>
+  <button class="busca" id="busca" type="button" aria-label="Buscar telas e módulos (Ctrl+K)">{{icon:search}}<span>Buscar telas e módulos…</span><kbd>Ctrl K</kbd></button>
+  <div class="tl-r">
+    <button class="tema" id="tema" type="button" aria-label="Alternar tema claro ou escuro" title="Tema"><span id="tema-ic">◐</span></button>
+    <button class="sino" id="sino" type="button" aria-label="Notificações">{{icon:bell}}<span id="badge" hidden></span></button>
+    <button class="cfg" id="cfg" type="button" aria-label="Configurações" aria-haspopup="menu" aria-expanded="false">{{icon:settings}}</button>
+    <button class="eu" id="eu" type="button" aria-label="Meu painel"><span id="eu-av" class="av sm avt">?</span><span class="eu-tx"><span id="eu-nm"></span><small id="eu-pf"></small></span></button>
+  </div>
+</div></header>
+<div class="trilha"><div class="trilha-in"><button class="voltar" id="back" type="button" hidden>{{icon:chevron-left}}Voltar</button><div class="crumb"><span id="crumb"></span><h1 id="ttl" aria-live="polite"></h1></div></div></div>
+<div id="scrim" hidden></div><aside id="drawer" aria-label="Menu lateral"></aside>
+<main id="app" tabindex="-1"><div class="skel-wrap" role="status" aria-label="Carregando"><span class="skel s1"></span><span class="skel s2"></span><div class="skel-kpis"><span class="skel k"></span><span class="skel k"></span><span class="skel k"></span><span class="skel k"></span></div><span class="skel g"></span></div></main>
+<nav class="nav" aria-label="Atalhos"><div class="nav-in">
+  <button data-go="inicio" type="button">{{icon:layout-dashboard}}Início</button>
+  <button data-go="acomp" type="button">{{icon:list-checks}}Ações</button>
+  <button data-go="nova" type="button" class="plus">{{icon:plus}}Inspeções</button>
+  <button data-go="dds" type="button">{{icon:message-square-text}}DDS</button>
+  <button data-go="minhas" type="button">{{icon:circle-user-round}}Meu perfil</button>
+</div></nav>

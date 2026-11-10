@@ -1,0 +1,71 @@
+/* ==========================================================================
+   INSPEÇÕES SSMA — Design System "Sentinela"
+   Tokens globais. Sobrescrevem as variáveis originais (mesmos nomes) para que
+   todas as telas existentes herdem a nova identidade sem alterar a lógica.
+   ========================================================================== */
+:root{
+  /* Marca — verde-floresta profundo + lima de destaque */
+  --brand-950:#06130D; --brand-900:#0A2017; --brand-800:#10311F; --brand-700:#164529;
+  --brand-600:#1B6B43; --brand-500:#23895A; --brand-400:#4DB67F; --brand-300:#8ED7AE;
+  --brand-100:#DDF2E6; --brand-50:#EEF8F2;
+  --acc:#B7E24C;            /* lima: realce sobre fundos escuros */
+  --acc-ink:#1E3A05;
+
+  /* Neutros (levemente esverdeados, harmonizam com a marca) */
+  --bg:#F2F5F3; --card:#FFFFFF; --surface-2:#F7F9F8; --surface-3:#EDF1EF;
+  --line:#E0E6E2; --line-strong:#C6CFCA;
+  --ink:#0E1A14; --ink2:#34453B; --mute:#56665D;
+
+  /* Variáveis herdadas do app (mesmos nomes, novos valores) */
+  --graf:#10311F; --verde:#8CCB4E; --verde-ink:#1B6B43; --verde-bg:#E4F4EB;
+  --verm:#B42318; --verm-bg:#FDE9E7; --ambar:#8A4B04; --ambar-bg:#FCEFD3;
+  --azul:#1D4ED8; --azul-bg:#E5EDFE; --na-bg:#EDF0EE; --onbar:#FFFFFF;
+  --panel2:#EDF1EF;
+
+  /* Estados semânticos */
+  --ok:#15803D; --ok-bg:#E1F5E8; --warn:#8A4B04; --warn-bg:#FCEFD3;
+  --danger:#B42318; --danger-bg:#FDE9E7; --info:#1D4ED8; --info-bg:#E5EDFE;
+
+  /* Tipografia */
+  --f-ui:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-display:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;
+  --fs-xs:12px; --fs-sm:13.5px; --fs-md:15px; --fs-lg:17px; --fs-xl:21px; --fs-2xl:28px; --fs-3xl:36px;
+
+  /* Espaço, raios, sombras, movimento */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px;
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(10,32,23,.05),0 1px 1px rgba(10,32,23,.03);
+  --sh-2:0 1px 2px rgba(10,32,23,.05),0 6px 18px rgba(10,32,23,.06);
+  --sh-3:0 2px 4px rgba(10,32,23,.06),0 14px 36px rgba(10,32,23,.12);
+  --ring:0 0 0 3px color-mix(in srgb,var(--brand-500) 32%,transparent);
+  --ease:cubic-bezier(.2,.7,.2,1); --t-fast:.14s; --t-med:.22s;
+
+  /* Estrutura */
+  --sb-w:272px; --sb-w-min:78px; --top-h:60px;
+  --sb-bg:linear-gradient(180deg,#0C2419 0%,#091A12 100%);
+  --sb-ink:#DCE9E1; --sb-mute:#8FA89A; --sb-line:rgba(255,255,255,.08); --sb-hover:rgba(255,255,255,.07);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B120E; --card:#121C16; --surface-2:#0F1812; --surface-3:#18241D;
+  --line:#25342B; --line-strong:#3A4D41;
+  --ink:#EEF4F0; --ink2:#C3D1C8; --mute:#93A69A;
+  --graf:#1B2B21; --verde:#9BD85B; --verde-ink:#8ED7AE; --verde-bg:#17301F;
+  --verm:#FF8A80; --verm-bg:#3A1C1A; --ambar:#F2B455; --ambar-bg:#352A12; --azul:#8DB0FF; --azul-bg:#17233F; --na-bg:#1C2620;
+  --panel2:#18241D;
+  --ok:#6FD39A; --ok-bg:#15301F; --warn:#F2B455; --warn-bg:#352A12; --danger:#FF8A80; --danger-bg:#3A1C1A; --info:#8DB0FF; --info-bg:#17233F;
+  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76;
+  --sh-1:0 1px 2px rgba(0,0,0,.4); --sh-2:0 6px 18px rgba(0,0,0,.35); --sh-3:0 14px 36px rgba(0,0,0,.5);
+  --sb-bg:linear-gradient(180deg,#08120D 0%,#060D09 100%);
+}}
+:root[data-theme="dark"]{
+  --bg:#0B120E; --card:#121C16; --surface-2:#0F1812; --surface-3:#18241D;
+  --line:#25342B; --line-strong:#3A4D41;
+  --ink:#EEF4F0; --ink2:#C3D1C8; --mute:#93A69A;
+  --graf:#1B2B21; --verde:#9BD85B; --verde-ink:#8ED7AE; --verde-bg:#17301F;
+  --verm:#FF8A80; --verm-bg:#3A1C1A; --ambar:#F2B455; --ambar-bg:#352A12; --azul:#8DB0FF; --azul-bg:#17233F; --na-bg:#1C2620;
+  --panel2:#18241D;
+  --ok:#6FD39A; --ok-bg:#15301F; --warn:#F2B455; --warn-bg:#352A12; --danger:#FF8A80; --danger-bg:#3A1C1A; --info:#8DB0FF; --info-bg:#17233F;
+  --brand-100:#17301F; --brand-50:#10221A; --brand-600:#3FAE76;
+  --sh-1:0 1px 2px rgba(0,0,0,.4); --sh-2:0 6px 18px rgba(0,0,0,.35); --sh-3:0 14px 36px rgba(0,0,0,.5);
+  --sb-bg:linear-gradient(180deg,#08120D 0%,#060D09 100%);
+}
