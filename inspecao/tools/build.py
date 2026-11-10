@@ -62,3 +62,13 @@ out = out.replace('<title>Inspeções SSMA</title>', '<title>Inspeções SSMA</t
 dist = R/'dist'; dist.mkdir(exist_ok=True)
 (dist/'inspecoes-ssma.html').write_text(out, encoding='utf8')
 print('gerado', dist/'inspecoes-ssma.html', f'{len(out)/1024:.0f} KB')
+
+# ---- versão para publicar como artefato: sem <!doctype>/<html>/<head>/<body> (a publicação já embrulha a página) ----
+frag = out
+for tag in [r'<!doctype html>', r'<html[^>]*>', r'</html>', r'<head>', r'</head>', r'<body>', r'</body>']:
+    frag = re.sub(tag, '', frag, flags=re.I)
+frag = frag.lstrip()
+assert frag.startswith('<meta charset') or frag.startswith('<meta'), frag[:80]
+assert '<title>Inspeções SSMA</title>' in frag[:8000]
+(dist/'inspecoes-ssma.artefato.html').write_text(frag, encoding='utf8')
+print('gerado', dist/'inspecoes-ssma.artefato.html', f'{len(frag)/1024:.0f} KB')
