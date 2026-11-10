@@ -47,14 +47,14 @@ out = out.replace('family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wg
 head, body = out.split('<body>', 1)
 head = head.replace('"Barlow Condensed"', '"Bricolage Grotesque"').replace('"Barlow"', '"Public Sans"')
 # 2) CSS do Design System depois do CSS original
-css = (D/'tokens.css').read_text(encoding='utf8') + '\n' + (D/'componentes.css').read_text(encoding='utf8')
+css = (D/'tokens.css').read_text(encoding='utf8') + '\n' + (D/'componentes.css').read_text(encoding='utf8') + '\n' + (D/'dashboard.css').read_text(encoding='utf8')
 head = head.replace('</head>', '<style id="sentinela">\n'+css+'\n</style>\n</head>')
 # 3) shell novo: do <header class="top"> até o fim do <nav class="nav">…</nav>
 a = body.index('<header class="top">'); b = body.index('</nav>', a) + len('</nav>')
 body = body[:a] + shell + body[b:]
 # 4) JS da camada de interface ao final do app
 luc_js = '<script>window.__LUC=' + json.dumps(LUC, ensure_ascii=False) + ';</script>\n'
-shell_js = '<script>\n' + (D/'shell.js').read_text(encoding='utf8') + '\n</script>\n'
+shell_js = '<script>\n' + (D/'shell.js').read_text(encoding='utf8') + '\n</script>\n<script>\n' + (D/'dashboard.js').read_text(encoding='utf8') + '\n</script>\n'
 last = body.rindex('</body>')
 body = body[:last] + luc_js + shell_js + body[last:]
 out = head + '<body>' + body

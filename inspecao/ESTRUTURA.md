@@ -13,7 +13,9 @@ inspecao/
 │   ├── tokens.css       cores, tipografia, espaços, raios, sombras, movimento (claro + escuro)
 │   ├── componentes.css  botões, cards, KPIs, filtros, formulários, tabelas, modais, shell…
 │   ├── shell.html       novo cabeçalho, trilha/breadcrumb, sidebar, navegação móvel
-│   └── shell.js         sidebar recolhível, busca Ctrl+K, configurações, ícones, a11y
+│   ├── shell.js         sidebar recolhível, busca Ctrl+K, configurações, ícones, a11y
+│   ├── dashboard.js     dashboard executivo (aba do Painel geral)
+│   └── dashboard.css    estilos do dashboard
 ├── tools/           Build e testes
 │   ├── build.py         original + design  ->  dist/inspecoes-ssma.html
 │   ├── mock-claude.js   banco/usuário SIMULADOS (só teste local, nunca publicar)
@@ -21,6 +23,8 @@ inspecao/
 │   ├── run-interacoes.js  25 checagens de sidebar/busca/tema/menu móvel
 │   ├── run-a11y.js      axe-core (WCAG 2.x A/AA) em 25 telas × claro/escuro
 │   ├── run-overflow.js  rolagem horizontal em 390/820/1024/1440 px
+│   ├── run-dashboard.js 40 verificações do dashboard (filtros, abas, navegação, vazio, móvel)
+│   ├── make-seed.py     dados SINTÉTICOS de teste (nunca publicar)
 │   └── axe.min.js       axe-core 4.10.2 (MPL-2.0)
 └── dist/
     └── inspecoes-ssma.html   resultado final, pronto para publicar como artefato
