@@ -1,6 +1,6 @@
 # Relatório — transformação visual do Inspeções SSMA
 
-Estado: **implementado e testado localmente; NÃO publicado** (ver "Pendências").
+Estado: **publicado no artefato existente** (versões 85 e 86, banco e permissões preservados). Testado localmente com banco simulado.
 
 ## 1. Páginas reformuladas
 As 57 telas do app herdam a nova identidade (tokens + componentes + shell). 54 renderizam sem erro; as 3 restantes
@@ -34,7 +34,7 @@ Desktop ≥1000px: sidebar fixa. Tablet/celular: gaveta + barra inferior, busca 
 ## 6. Problemas encontrados e pendências
 Bugs do **original** corrigidos: ícones 24×24 sem tamanho que quebravam a Ergonomia 360° (SVG preto gigante); aba "undefined AET"; gráficos, selects e abas sem nome acessível.
 Pendências / limites honestos:
-- **Não publicado.** Publicar sobre o artefato existente substitui o app em uso; precisa da sua autorização.
+- Publicado com autorização do dono do artefato; a cópia intacta do original está em `original/` e o histórico de versões do artefato permite voltar.
 - Autenticação, permissões, regras de negócio e banco **não foram alterados**. Mas o teste usou banco **simulado e vazio**: login real, dados reais, formulários completos com dados e fluxos de ponta a ponta **não foram testados**.
 - Fontes (Google Fonts) não carregaram no ambiente de teste (sem rede); a renderização com as fontes finais não foi vista.
 - 1 contraste insuficiente: rótulo colorido de categoria nas Etiquetas SIM (cor vem dos dados).
